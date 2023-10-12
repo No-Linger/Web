@@ -2,7 +2,7 @@ name: Run test on pull request
 
 on: 
   pull_request:
-    branches: [development, stage, master]
+    branches: [development, stage, main]
 jobs:
   build:
     runs-on: ubuntu-latest
