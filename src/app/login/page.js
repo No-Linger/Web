@@ -49,7 +49,7 @@ export default function Home() {
         </section>
     </div>
     
-    <div>
+    <div className="top-0">
         <Footer/>
     </div>
     
