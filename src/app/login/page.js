@@ -7,7 +7,7 @@ export default function Home() {
 <div className="bg-gray-50 dark:bg-gray-900 min-h-screen">
     <div>
         <section>
-            <div className="flex flex-col items-center justify-center p-0 space-y-0 md:space-y-6 sm:p-4">
+            <div className="flex flex-col items-center justify-center p-0 space-y-0 md:space-y-6 sm:p-16">
                   <div className="flex flex-col items-center justify-center w-full bg-white rounded-lg shadow dark:border md:mt-0 sm:max-w-md xl:p-0 dark:bg-gray-800 dark:border-gray-700">
 
                     <a href="https://github.com/No-Linger" className="flex items-center mt-6 text-2xl dark:text-white">
