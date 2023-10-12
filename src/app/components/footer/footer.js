@@ -1,8 +1,8 @@
 export default function Footer() {
 
 return (
-<footer className=" dark:bg-gray-900">
-    <div className="w-full max-w-screen-xl mx-auto p-4 ">
+<footer className=" dark:bg-gray-900 sticky top-[100vh]">
+    <div className="w-full max-w-screen-xl mx-auto">
         <div className="sm:flex sm:items-center sm:justify-between">
         </div>
         <hr className="my-6 border-gray-200 sm:mx-auto dark:border-gray-700"/>
