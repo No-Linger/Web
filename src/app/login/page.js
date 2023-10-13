@@ -1,7 +1,7 @@
 import Logo from "@/images/NoLinger.jpeg";
 import Footer from "@/app/components/footer/footer.js";
 
-export default function Home() {
+export default function Login() {
 
   return (
 <div className="bg-gray-50 dark:bg-gray-900 min-h-screen">
