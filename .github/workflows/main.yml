@@ -1,4 +1,4 @@
-name: Run test on pull request
+name: Run tests on pull request
 
 on: 
   pull_request:
@@ -20,11 +20,3 @@ jobs:
       run: | 
         npm install
         npm test
-
-    - name: Approve and merge pull request
-      if: success()
-      run: |
-        gh pr review ${{ github.event.pull_request.number }} --approve
-        gh pr merge ${{ github.event.pull_request.number }}
-      env:
-        GITHUB_TOKEN: ${{ secrets.TOKEN }}
