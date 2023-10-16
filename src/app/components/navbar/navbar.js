@@ -10,8 +10,8 @@ const user = {
 }
 const navigation = [
   { name: 'Planogramas', href: 'planogramas', current: false },
-  { name: 'Personas', href: '#', current: false },
-  { name: 'Tiendas', href: '#', current: false },
+  { name: 'Personas', href: 'personas', current: false },
+  { name: 'Tiendas', href: 'tiendas', current: false },
 ]
 const userNavigation = [
   { name: 'Mi perfil', href: '#' },
