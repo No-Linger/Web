@@ -5,11 +5,11 @@ export default function Table({ columns, data, button, onClick }) {
     return (
         <div className="relative overflow-x-auto shadow-md sm:rounded-lg">
             <table className="w-full text-sm text-left text-gray-500 dark:text-gray-400">
-                <caption class="p-5 font-semibold text-left text-gray-900 bg-white dark:text-white dark:bg-gray-800">
+                <caption className="p-5 font-semibold text-left text-gray-900 bg-white dark:text-white dark:bg-gray-800">
                     <div className="flex flex-row justify-end ">
                         <button type="button" className="flex flex-row justify-center items-center"
                         onClick={onClick}>
-                            <p class="text-sm font-normal text-gray-500 dark:text-gray-400">{button}</p>
+                            <p className="text-sm font-normal text-gray-500 dark:text-gray-400">{button}</p>
                             <PlusIcon className="block w-6 text-gray-500 dark:text-gray-400" aria-hidden="true"/></button>
                     </div>
                 </caption>

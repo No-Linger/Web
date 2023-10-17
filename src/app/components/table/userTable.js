@@ -8,7 +8,7 @@ export default function UserTable ({ users , onClick}) {
             <div className="flex flex-row justify-end ">
                 <button type="button" className="flex flex-row justify-center items-center"
                     onClick={onClick}>
-                        <p class="text-sm font-normal text-gray-500 dark:text-gray-400">Agregar usuario</p>
+                        <p className="text-sm font-normal text-gray-500 dark:text-gray-400">Agregar usuario</p>
                         <PlusIcon className="block w-6 text-gray-500 dark:text-gray-400" aria-hidden="true"/></button>
             </div>
         </caption>
