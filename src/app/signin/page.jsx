@@ -1,5 +1,6 @@
 'use client';
 
+import NoLinger from '@/images/NoLinger.png';
 import { signIn } from 'next-auth/react';
 import { useRouter } from 'next/navigation';
 import { useState } from 'react';
@@ -28,6 +29,9 @@ export default function Signin() {
   return (
     <div className="flex items-center justify-center min-h-screen bg-gray-980">
       <div className="bg-white rounded-lg shadow-md p-8 w-full max-w-md transform transition-transform hover:scale-105 hover:shadow-xl">
+
+        <img className= 'mx-auto h-48 w-48' src={NoLinger.src} alt='logo NoLinger'/>
+
         <div className="text-center">
           <h2 className="text-2xl font-bold text-gray-800">Iniciar Sesión</h2>
         </div>
@@ -39,7 +43,7 @@ export default function Signin() {
               type="email"
               id="email"
               name="email"
-              className="w-full text-black px-4 py-2 border rounded-lg focus:outline-none "
+              className="w-full text-black px-4 py-2 border-2 border-neutral-500 rounded-lg focus:outline-none"
               placeholder="adrianBravo@tec.com"
               onChange={(e) => setEmail(e.target.value)}
               required
@@ -52,7 +56,7 @@ export default function Signin() {
               type="password"
               id="password"
               name="password"
-              className="w-full px-4 py-2 border rounded-lg focus:outline-none text-black"
+              className="w-full px-4 py-2 border-2 border-neutral-500 rounded-lg focus:outline-none text-black"
               placeholder="********"
               onChange={(e) => setPassword(e.target.value)}
               required
@@ -81,10 +85,10 @@ export default function Signin() {
           </button>
         </form>
         <p className="mt-4 text-center text-gray-600 text-sm">
-          No eres miembro todavía? <a href="/signup" className="text-green-500 hover:underline">Crear cuenta</a>
+          No eres miembro todavía? <a href="/signup" className="text-slate-900 hover:underline">Crear cuenta</a>
         </p>
         <p className="mt-4 text-center text-gray-600 text-sm">
-        Olvidaste tu contraseña? <a href="/forgot_password" className="text-green-500 hover:underline">Entra aquí</a>
+        Olvidaste tu contraseña? <a href="/forgot_password" className="text-slate-900 hover:underline">Entra aquí</a>
         </p>
         <div className="mt-6">
         </div>
