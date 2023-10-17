@@ -4,6 +4,7 @@ import NoLinger from '@/images/NoLinger.png';
 import { signIn } from 'next-auth/react';
 import { useRouter } from 'next/navigation';
 import { useState } from 'react';
+import Footer from '../footer/footer.jsx';
 
 
 export default function Signin() {
@@ -28,7 +29,7 @@ export default function Signin() {
 
   return (
     <div className="flex items-center justify-center min-h-screen bg-gray-980">
-      <div className="bg-white rounded-lg shadow-md p-8 w-full max-w-md transform transition-transform hover:scale-105 hover:shadow-xl">
+      <div className="bg-white rounded-lg shadow-md p-8 w-full max-w-md transform transition-transform hover:scale-105 hover:shadow-xl mb-10">
 
         <img className= 'mx-auto h-48 w-48' src={NoLinger.src} alt='logo NoLinger'/>
 
@@ -41,6 +42,7 @@ export default function Signin() {
             <label htmlFor="email" className="block text-gray-600 text-sm font-semibold">Correo Electrónico</label>
             <input
               type="email"
+              autoComplete='email'
               id="email"
               name="email"
               className="w-full text-black px-4 py-2 border-2 border-neutral-500 rounded-lg focus:outline-none"
@@ -95,6 +97,7 @@ export default function Signin() {
       
 
       </div>
+      <Footer/>
     </div>
   );
 }

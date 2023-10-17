@@ -5,13 +5,12 @@ import { getFirestore,  } from 'firebase/firestore';
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
-  apiKey: "AIzaSyCpNX4vBH-ISKx3544B-xiLzN1Wt-4DKww",
-  authDomain: "housestock-cec9b.firebaseapp.com",
-  projectId: "housestock-cec9b",
-  storageBucket: "housestock-cec9b.appspot.com",
-  messagingSenderId: "399042199966",
-  appId: "1:399042199966:web:d6d6c38674067658f9d68f",
-  measurementId: "G-9CK6LJ7MK2"
+  apiKey: "AIzaSyDe9-zrufJrqYRvDFJJPiMYsxtxjPdlOOo",
+  authDomain: "next-auth-username-passw-ba997.firebaseapp.com",
+  projectId: "next-auth-username-passw-ba997",
+  storageBucket: "next-auth-username-passw-ba997.appspot.com",
+  messagingSenderId: "88302614581",
+  appId: "1:88302614581:web:a5d6569798fb23c63e197c"
 };
 
 // Initialize Firebase
