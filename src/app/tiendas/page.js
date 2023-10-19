@@ -65,13 +65,30 @@ export default function Tiendas() {
                             <Dialog.Title
                                 as="h3"
                                 className="text-lg font-medium leading-6 text-gray-900">
-                                Aqui va el formulario para agregar tiendas
+                                Agregar tiendas
                             </Dialog.Title>
-                            <div className="mt-2">
-                                <p className="text-sm text-gray-500">
-                                    Siuu
-                                </p>
-                            </div>
+                           
+                        <div className="w-full">
+                         <label for="default-input" className="block mb-2 text-sm font-medium text-gray-900 dark:text-dark">Nombre</label>
+                        <input type="text" id="default-input" 
+                        className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500
+                        focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white
+                          dark:focus:ring-blue-500 dark:focus:border-blue-500"/>
+                    </div> 
+                    <div className="w-full">
+                      <label for="default-input" className="block mb-2 text-sm font-medium text-gray-900 dark:text-dark">Dirección</label>
+                        <input type="text" id="default-input" 
+                        className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500
+                        focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white
+                          dark:focus:ring-blue-500 dark:focus:border-blue-500"/>
+                    </div>
+                    <div className="w-full">
+                      <label for="default-input" className="block mb-2 text-sm font-medium text-gray-900 dark:text-Dark">Encargado</label>
+                        <input type="text" id="default-input" 
+                        className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500
+                        focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white
+                          dark:focus:ring-blue-500 dark:focus:border-blue-500"/>
+                    </div>
                             <div className="mt-4 justify-between flex">
                                 <button
                                 type="button"
