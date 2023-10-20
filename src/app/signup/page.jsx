@@ -61,6 +61,7 @@ export default function Signup() {
           </div>
           <div className="flex items-center justify-between">
             <button
+              data-testid = "signup-button"
               type="button"
               className="w-full bg-green-500 hover:bg-green-600 text-white font-semibold py-2 px-4 rounded-lg focus:ring focus:ring-green-500 focus:outline-none transform transition-transform hover:scale-105"
               onClick={() => {

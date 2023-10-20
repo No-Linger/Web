@@ -31,10 +31,10 @@ export default function Signin() {
     <div className="flex items-center justify-center min-h-screen bg-gray-980">
       <div className="bg-white rounded-lg shadow-md p-8 w-full max-w-md transform transition-transform hover:scale-105 hover:shadow-xl mb-10">
 
-        <img className= 'mx-auto h-48 w-48' src={NoLinger.src} alt='logo NoLinger'/>
+        <img data-testid = "no-linger-logo" className= 'mx-auto h-48 w-48' src={NoLinger.src} alt='logo NoLinger'/>
 
         <div className="text-center">
-          <h2 className="text-2xl font-bold text-gray-800">Iniciar Sesión</h2>
+          {/* <h2 className="text-2xl font-bold text-gray-800">Iniciar Sesión</h2> */}
         </div>
         <form className="mt-6">
 
