@@ -1,4 +1,5 @@
 import "./globals.css";
+import SessionProvider from "./SessionProvider";
 
 export const metadata = {
   title: "No Linger",
@@ -7,8 +8,12 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en">
-      <body>{children}</body>
+    <html lang="en" className="h-full bg-gray-900">
+      <body>
+        <SessionProvider>
+          {children}
+        </SessionProvider>
+      </body>
     </html>
   );
 }
