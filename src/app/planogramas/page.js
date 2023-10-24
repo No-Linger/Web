@@ -19,9 +19,9 @@ export default function Planogramas() {
     const columns = ['Nombre', 'Tienda', 'Fecha', 'Ver'];
 
     const data = [
-    { 'Nombre': 'Apple MacBook Pro 17"', 'Tienda': 'Silver', 'Fecha': 'Laptop', 'Ver': '$2999' },
-    { 'Nombre': 'Microsoft Surface Pro', 'Tienda': 'White', 'Fecha': 'Laptop PC', 'Ver': '$1999' },
-    { 'Nombre': 'Magic Mouse 2', 'Tienda': 'Black', 'Fecha': 'Accessories', 'Ver': '$99' },
+    { 'Nombre': 'Planograma Sabritas', 'Tienda': 'Oxxo CEM Lago de Guadalupe', 'Fecha': '23 octubre, 2023', 'Ver': 'Foto' },
+    { 'Nombre': 'Planograma Bimbo', 'Tienda': 'Oxxo CCM', 'Fecha': '23 Noviembre, 2023', 'Ver': 'Foto' },
+    { 'Nombre': 'Planograma Barcel', 'Tienda': 'Oxxo campus Monterrey', 'Fecha': '23 Diciembre, 2023', 'Ver': 'Foto' },
 ];
   return (
     <>
@@ -63,19 +63,39 @@ export default function Planogramas() {
                 leaveFrom="opacity-100 scale-100"
                 leaveTo="opacity-0 scale-95"
               >
-                <Dialog.Panel className="w-full max-w-md transform overflow-hidden rounded-2xl bg-white p-6 text-left align-middle shadow-xl transition-all">
+
+                <Dialog.Panel className="w-full max-w-md transform overflow-hidden rounded-2xl bg-white dark:bg-gray-800 p-6 text-left align-middle shadow-xl transition-all">
                   <Dialog.Title
                     as="h3"
-                    className="text-lg font-medium leading-6 text-gray-900"
-                  >
-                    Aqui va el formulario para agregar planogramas
+                    className="text-lg font-medium leading-6 text-gray-900 dark:text-white pb-6">
+                    Agregar planograma
                   </Dialog.Title>
-                  <div className="mt-2">
-                    <p className="text-sm text-gray-500">
-                        Siuu
-                    </p>
+                  <div className="flex flex-col justify-between space-y-4">
+                    <div className="w-full">
+                      <label for="default-input" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+                          Nombre</label>
+                        <input type="text" id="default-input"
+                        className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500
+                        focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white
+                          dark:focus:ring-blue-500 dark:focus:border-blue-500"/>
+                    </div> 
+                    <div className="w-full">
+                      <label for="countries" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Selecciona tienda</label>
+                      <select id="countries" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                        <option selected>Choose a country</option>
+                        <option value="US">United States</option>
+                        <option value="CA">Canada</option>
+                        <option value="FR">France</option>
+                        <option value="DE">Germany</option>
+                      </select>
+                    </div>
+                    <div className="w-full">
+                      <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white" for="file_input">Selecciona planograma</label>
+                      <input className="block w-full text-sm text-gray-900 border 
+                      border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none
+                      dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400" type="file" accept="image/png, image/jpeg"/>
+                    </div>
                   </div>
-
                   <div className="mt-4 justify-between flex">
                     <button
                       type="button"
@@ -93,6 +113,7 @@ export default function Planogramas() {
                     </button>
                   </div>
                 </Dialog.Panel>
+                
               </Transition.Child>
             </div>
           </div>
