@@ -19,7 +19,7 @@ export default function Planogramas() {
     const columns = ['Nombre', 'Tienda', 'Fecha', 'Ver'];
 
     const data = [
-    { 'Nombre': 'Planograma Sabritas', 'Tienda': 'Oxxo CEM Lago de Guadalupe', 'Fecha': '23 octubre, 2023', 'Ver': 'Foto' },
+    { 'Nombre': 'Planograma Sabritas', 'Tienda': 'Oxxo CEM', 'Fecha': '23 octubre, 2023', 'Ver': 'Foto' },
     { 'Nombre': 'Planograma Bimbo', 'Tienda': 'Oxxo CCM', 'Fecha': '23 Noviembre, 2023', 'Ver': 'Foto' },
     { 'Nombre': 'Planograma Barcel', 'Tienda': 'Oxxo campus Monterrey', 'Fecha': '23 Diciembre, 2023', 'Ver': 'Foto' },
 ];
