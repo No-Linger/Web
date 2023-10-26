@@ -1,6 +1,6 @@
 import NextAuth from 'next-auth';
 import {signInWithEmailAndPassword} from 'firebase/auth';
-import {auth} from "@/app/firebase";
+import { auth } from '@/app/utils/firebase'
 
 import 'dotenv/config'
 
