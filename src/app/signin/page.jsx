@@ -1,6 +1,7 @@
 'use client';
 
 import NoLinger from '@/images/NoLinger.png';
+import GoogleLogo from '@/images/googleLogo.png';
 import { signIn } from 'next-auth/react';
 import { useRouter } from 'next/navigation';
 import { useState } from 'react';
@@ -32,9 +33,8 @@ export default function Signin() {
       <div className="bg-white rounded-lg shadow-md p-8 w-full max-w-md transform transition-transform hover:scale-105 hover:shadow-xl mb-10">
 
         <img data-testid = "no-linger-logo" className= 'mx-auto h-48 w-48' src={NoLinger.src} alt='logo NoLinger'/>
-
         <div className="text-center">
-          {/* <h2 className="text-2xl font-bold text-gray-800">Iniciar Sesión</h2> */}
+          <h2 className="text-2xl font-bold text-gray-800">Bienvenido Colaborador</h2>
         </div>
         <form className="mt-6">
 
@@ -45,7 +45,7 @@ export default function Signin() {
               autoComplete='email'
               id="email"
               name="email"
-              className="w-full text-black px-4 py-2 border-2 border-neutral-500 rounded-lg focus:outline-none"
+              className="w-full text-black px-4 py-2 border-gray-300 border-2 rounded-lg focus:outline-none"
               placeholder="adrianBravo@tec.com"
               onChange={(e) => setEmail(e.target.value)}
               required
@@ -58,7 +58,7 @@ export default function Signin() {
               type="password"
               id="password"
               name="password"
-              className="w-full px-4 py-2 border-2 border-neutral-500 rounded-lg focus:outline-none text-black"
+              className="w-full px-4 py-2 border-gray-300 border-2 rounded-lg focus:outline-none text-black"
               placeholder="********"
               onChange={(e) => setPassword(e.target.value)}
               required
@@ -71,20 +71,21 @@ export default function Signin() {
           <div className="flex items-center justify-between">
             <button
               type="button"
-              className="w-full bg-green-500 hover:bg-green-600 text-white font-semibold py-2 px-4 rounded-lg focus:ring focus:ring-green-500 focus:outline-none"
+              className="w-full bg-[#4285F4] hover:bg-[#357AE8] text-white font-semibold py-2 px-4 my-2 rounded-lg focus:ring focus:ring-[#4285F4] focus:outline-none"
               onClick={handleSignIn}
               disabled={!email || !password}
             >
               Iniciar Sesión
             </button>
           </div>
+
           <button
             type="button"
-            className="w-full bg-[#4285F4] hover:bg-[#357AE8] text-white font-semibold py-2 px-4 my-2 rounded-lg focus:ring focus:ring-[#4285F4] focus:outline-none"
-            onClick={() => signIn('google')}
-          >
-            Inicia sesión con Google
+            className="flex items-center justify-center w-full bg-white hover:bg-slate-200 text-slate-800 font-semibold py-2 px-4 rounded-lg focus:ring focus:outline-none border-gray-300 border-2"
+            onClick={() => signIn('google')}>
+              <img className= 'mx-auto h-6 w-6' src={GoogleLogo.src} alt='Google'/>
           </button>
+
         </form>
         <p className="mt-4 text-center text-gray-600 text-sm">
           No eres miembro todavía? <a href="/signup" className="text-slate-900 hover:underline">Crear cuenta</a>
