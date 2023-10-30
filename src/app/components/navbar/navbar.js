@@ -1,7 +1,7 @@
 import { Fragment } from 'react'
 import { Disclosure, Menu, Transition } from '@headlessui/react'
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline'
-import NoLinger from '@/images/NoLinger.png'
+import NoLingerCon from '@/images/NoLingerCon.jpg'
 
 const user = {
   name: 'Tom Cook',
@@ -36,7 +36,7 @@ export default function Navbar() {
                   <div className="flex-shrink-0">
                     <img
                       className="h-8 w-8"
-                      src={NoLinger.src}
+                      src={NoLingerCon.src}
                       alt="Your Company"
                     />
                   </div>
