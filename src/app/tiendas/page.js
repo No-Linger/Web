@@ -53,6 +53,14 @@ export default function Tiendas() {
       console.log(response);
       setMessage({ ...message, message: 'Tienda agregada correctamente', status: true });
 
+      axios.get(`${NEXT_PUBLIC_API_URL}/getStores`)
+      .then((response) => {
+        setTiendasList(response.data.stores);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+
       setTimeout(() => {
         closeModal();
         setMessage({ ...message, message: '', status: false });
