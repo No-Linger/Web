@@ -30,14 +30,13 @@ export default class BucketService {
         
         console.log(fileName)
         try {
-            const response = await axios.put(`${this.signedURL}/${fileName}`, imageData, {
+            const response = await axios.put(`${this.signedURL}${fileName}`, imageData, {
                 headers: {
-                    'Content-Type': 'application/octet-stream',
-                    'Content-Type': 'image/jpeg',
+                    'Content-Type': 'application/x-www-form-urlencoded',
                 }});
             console.log(response);
             
-            const downloadURL = `${this.signedURL}/${fileName}`;
+            const downloadURL = `${this.signedURL}${fileName}`;
 
             return downloadURL;
         } catch (error) {
