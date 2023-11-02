@@ -58,7 +58,7 @@ export default function Planogramas() {
       try {
 
         const bucket = new BucketService();
-        const url = await bucket.uploadFile(image, image.name);
+        const url = await bucket.uploadFile(image.file, image.name);
   
         const response = await axios.post(`${NEXT_PUBLIC_API_URL}/createPlanogram`, {
           name: planogram.name,
@@ -165,14 +165,17 @@ export default function Planogramas() {
                       <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Selecciona planograma</label>
                       <input 
                       onChange={(e) => {
-                        const file = e.target.files[0]
-                        
-                        if (file){
+                        const file = e.target.files[0];
+                      
+                        if (file) {
                           const reader = new FileReader();
-                          reader.readAsDataURL(file);
+                      
                           reader.onload = () => {
-                            setImage({...image, name: file.name, file: reader.result})
-                          }
+                            const blob = new Blob([reader.result]);
+                            setImage({ ...image, name: file.name, file: blob });
+                          };
+                      
+                          reader.readAsArrayBuffer(file);
                         }
                       }}
                       className="block w-full text-sm text-gray-900 border 
