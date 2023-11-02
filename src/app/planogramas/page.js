@@ -17,7 +17,10 @@ export default function Planogramas() {
         img: null
     });
 
-    const [image, setImage] = useState();  
+    const [image, setImage] = useState({
+      name: "",
+      file: null
+    });  
     const [stores, setStores] = useState([])
     const [isOpen, setisOpen] = useState(false)
 
@@ -55,7 +58,7 @@ export default function Planogramas() {
       try {
 
         const bucket = new BucketService();
-        const url = await bucket.uploadFile(image, planogram.name);
+        const url = await bucket.uploadFile(image, image.name);
   
         const response = await axios.post(`${NEXT_PUBLIC_API_URL}/createPlanogram`, {
           name: planogram.name,
@@ -163,12 +166,12 @@ export default function Planogramas() {
                       <input 
                       onChange={(e) => {
                         const file = e.target.files[0]
-                        console.log(file);
+                        
                         if (file){
                           const reader = new FileReader();
                           reader.readAsDataURL(file);
                           reader.onload = () => {
-                            setImage(reader.result);
+                            setImage({...image, name: file.name, file: reader.result})
                           }
                         }
                       }}
