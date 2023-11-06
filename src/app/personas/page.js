@@ -43,6 +43,14 @@ const usuarios = [
 ];
 export default function Personas() {
   const [isOpen, setisOpen] = useState(false)
+  const [user,SetUser] = useState({
+      id:"",
+      name:"",
+      email:"",
+      telefono:"",
+      Tienda_id:"",
+      role:""
+  })
 
   function closeModal() {
       setisOpen(false);  
