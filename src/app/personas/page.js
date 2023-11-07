@@ -3,6 +3,9 @@ import Navbar from "../components/navbar/navbar";
 import UserTable from "../components/table/userTable";
 import { Dialog, Transition } from "@headlessui/react";
 import { Fragment, useState } from "react";
+import { authClient } from "../utils/firebase";
+import { createUserWithEmailAndPassword } from "firebase/auth";
+import { NEXT_PUBLIC_API_URL } from "../utils/config";
 
 const usuarios = [
   {
@@ -43,6 +46,7 @@ const usuarios = [
 ];
 export default function Personas() {
   const [isOpen, setisOpen] = useState(false)
+  const AUTH = authClient
   const [user,SetUser] = useState({
       id:"",
       name:"",
@@ -58,7 +62,44 @@ export default function Personas() {
 
   function openModal() {
       setisOpen(true);  
-  }   
+  }
+  
+  function createUser(){
+    
+    const password = "Password123!"
+
+      createUserWithEmailAndPassword(AUTH, user.email, password)
+      .then((userCredential) => {
+      // Signed up 
+      const user = userCredential.user;
+      console.log(user);
+      const data = {
+        id:2,
+        name:user.name,
+        email:user.email,
+        phone:user.phone,
+        store_id:2323,
+        role:"INGE"
+      }
+      fetch(NEXT_PUBLIC_API_URL,{
+        method:"POST",
+        headers:{'Content-Type': 'application/json'},
+        body:JSON.stringify(data)
+      })
+      .then(response =>{
+        if(!response.ok){
+          console.log("Error at DB!")
+        }
+        else{
+          console.log("Succesful")
+        }
+      })
+      })
+      .catch((error) => {
+        console.log(error)
+      });
+  }
+
   return (
     <>
       <div className="min-h-screen bg-gray-100 dark:bg-gray-700">
@@ -110,6 +151,7 @@ export default function Personas() {
                          <label for="default-input" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
                           Nombre</label>
                         <input type="text" id="default-input" 
+                        onChange={(e) => SetUser({...user,name:e.target.value})}
                         className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500
                         focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white
                           dark:focus:ring-blue-500 dark:focus:border-blue-500"/>
@@ -117,13 +159,15 @@ export default function Personas() {
                     <div className="w-full">
                       <label for="default-input" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Email</label>
                         <input type="text" id="default-input" 
+                        onChange={(e) => SetUser({...user,email:e.target.value})}
                         className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500
                         focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white
                           dark:focus:ring-blue-500 dark:focus:border-blue-500"/>
                     </div>
                     <div className="w-full">
                       <label for="default-input" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Numero telefonico</label>
-                        <input type="text" id="default-input" 
+                        <input type="text" id="default-input"
+                        onChange={(e) => SetUser({...user,phone:e.target.value})} 
                         className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500
                         focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white
                           dark:focus:ring-blue-500 dark:focus:border-blue-500"/>
@@ -140,7 +184,7 @@ export default function Personas() {
                           <button
                             type="button"
                             className="inline-flex justify-center rounded-md border border-transparent bg-blue-100 px-4 py-2 text-sm font-medium text-blue-900 hover:bg-blue-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2"
-                            onClick={closeModal}
+                            onClick={createUser}
                           >
                             Agregar
                           </button>

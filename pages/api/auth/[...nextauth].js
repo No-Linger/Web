@@ -1,6 +1,6 @@
 import NextAuth from 'next-auth';
 import {signInWithEmailAndPassword} from 'firebase/auth';
-import { auth } from '@/app/utils/firebase'
+import { authClient } from '@/app/utils/firebase'
 
 import 'dotenv/config'
 
@@ -34,7 +34,7 @@ const authOptions = {
             name: 'Credentials',
             credentials: {},
             async authorize(credentials) {
-                return await signInWithEmailAndPassword(auth, credentials.email || '', credentials.password || '')
+                return await signInWithEmailAndPassword(authClient, credentials.email || '', credentials.password || '')
                     .then(userCredential => {
                         if (userCredential.user) {
                             return userCredential.user;

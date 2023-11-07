@@ -1,3 +1,4 @@
+'use client'
 import {initializeApp } from "firebase/app";
 import { NEXT_PUBLIC_API_KEY,NEXT_PUBLIC_AUTH_DOMAIN,NEXT_PUBLIC_PROJECT_ID,NEXT_PUBLIC_BUCKET,NEXT_PUBLIC_MESSAGE_ID,NEXT_PUBLIC_APP_ID } from "./config";
 import {initializeAuth,} from "firebase/auth";
@@ -14,6 +15,7 @@ const firebaseConfig = {
 
 // Initialize Firebase
 export const Firebase_APP = initializeApp(firebaseConfig);
+console.log(firebaseConfig)
 
 const auth = initializeAuth(Firebase_APP)
 export const authClient = auth;
