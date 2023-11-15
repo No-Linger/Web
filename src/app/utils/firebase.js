@@ -1,21 +1,20 @@
-import { getApp, getApps, initializeApp } from "firebase/app";
-import { getAuth } from "firebase/auth";
-import { getFirestore,  } from 'firebase/firestore';
-
+'use client'
+import {initializeApp } from "firebase/app";
+import { NEXT_PUBLIC_API_KEY,NEXT_PUBLIC_AUTH_DOMAIN,NEXT_PUBLIC_PROJECT_ID,NEXT_PUBLIC_BUCKET,NEXT_PUBLIC_MESSAGE_ID,NEXT_PUBLIC_APP_ID } from "./config";
+import {initializeAuth,} from "firebase/auth";
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
-  apiKey: "AIzaSyDe9-zrufJrqYRvDFJJPiMYsxtxjPdlOOo",
-  authDomain: "next-auth-username-passw-ba997.firebaseapp.com",
-  projectId: "next-auth-username-passw-ba997",
-  storageBucket: "next-auth-username-passw-ba997.appspot.com",
-  messagingSenderId: "88302614581",
-  appId: "1:88302614581:web:a5d6569798fb23c63e197c"
+  apiKey: NEXT_PUBLIC_API_KEY,
+  authDomain: NEXT_PUBLIC_AUTH_DOMAIN,
+  projectId: NEXT_PUBLIC_PROJECT_ID,
+  storageBucket: NEXT_PUBLIC_BUCKET,
+  messagingSenderId: NEXT_PUBLIC_MESSAGE_ID,
+  appId: NEXT_PUBLIC_APP_ID
 };
 
 // Initialize Firebase
-const app = getApps().length ? getApp() : initializeApp(firebaseConfig);
-const db = getFirestore();
-const auth = getAuth();
+export const Firebase_APP = initializeApp(firebaseConfig);
 
-export { app, db, auth }
+const auth = initializeAuth(Firebase_APP)
+export const authClient = auth;
