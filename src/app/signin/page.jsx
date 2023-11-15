@@ -5,7 +5,7 @@ import GoogleLogo from '@/images/googleLogo.png';
 import { signIn } from 'next-auth/react';
 import { useRouter } from 'next/navigation';
 import { useState } from 'react';
-import Footer from '../footer/footer.jsx';
+import Footer from '../components/footer/footer.jsx';
 
 
 export default function Signin() {

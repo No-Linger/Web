@@ -1,5 +1,5 @@
 import "./globals.css";
-import SessionProvider from "./SessionProvider";
+import SessionProvider from "./utils/SessionProvider";
 
 export const metadata = {
   title: "No Linger",
