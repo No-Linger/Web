@@ -21,7 +21,7 @@ export default function UserTable ({ users , onClick}) {
             Número de teléfono
           </th>
           <th scope="col" className="px-6 py-3">
-            Última conexión
+            Tienda
           </th>
         </tr>
       </thead>
@@ -33,14 +33,14 @@ export default function UserTable ({ users , onClick}) {
           >
             <th scope="row" className="flex items-center px-6 py-4 text-gray-900 whitespace-nowrap dark:text-white">
               <div className="pl-3">
-                <div className="text-base font-semibold">{user.nombre}</div>
-                <div className="font-normal text-gray-500">{user.email}</div>
+                <div className="text-base font-semibold">{user.Nombre}</div>
+                <div className="font-normal text-gray-500">{user.Email}</div>
               </div>
             </th>
-            <td className="px-6 py-4">{user.phone_number}</td>
+            <td className="px-6 py-4">{user.Telefono}</td>
             <td className="px-6 py-4">
               <div className="flex items-center">
-                {user.ultima_conexion}
+                {user.Tienda_id}
               </div>
             </td>
           </tr>

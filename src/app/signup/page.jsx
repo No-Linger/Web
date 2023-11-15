@@ -2,15 +2,16 @@
 import { createUserWithEmailAndPassword } from 'firebase/auth';
 import { useRouter } from 'next/navigation';
 import { useState } from 'react';
-import { auth } from '../firebase';
+import { authClient } from '../utils/firebase';
 
 export default function Signup() {
+  const AUTH = authClient;
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [passwordAgain, setPasswordAgain] = useState('');
 
   const signup = () => {
-    createUserWithEmailAndPassword(auth, email, password);
+    createUserWithEmailAndPassword(AUTH, email, password);
   };
   const router = useRouter();
   
