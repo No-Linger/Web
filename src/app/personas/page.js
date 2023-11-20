@@ -6,11 +6,9 @@ import { Fragment, useEffect, useState } from "react";
 import { authClient } from "../utils/firebase";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { NEXT_PUBLIC_API_URL } from "../utils/config";
-import { getSession } from 'next-auth/react';
-
+import { getSession } from "next-auth/react";
 export default function Personas() {
-
-
+  
   const [isOpen, setisOpen] = useState(false)
   const [loading, setLoading] = useState(true);
   const AUTH = authClient
@@ -25,8 +23,13 @@ export default function Personas() {
   const [users,SetUsers] = useState([])
 
   const checkSession = async()=>{
-    const session = await getSession();
-    return session
+    const session = await getSession()
+  if(!session || !session.user){
+    console.log("XDXDXD")
+  }
+  else{
+    console.log(session)
+  }
   }
 
   const getUsers = async()=>{
@@ -45,19 +48,8 @@ export default function Personas() {
   }
 
   useEffect(() => {
-    const session = getSession()
     getUsers()
-    if (!session) {
-      console.log("XDXDXD")
-      //router.push('/signin');
-    };
-
-  if (!session) {
-    // You can optionally show a loading spinner or a message while checking authentication
-    return <div>Loading...</div>;
-  }
-
-
+    checkSession()
   }, [])
 
   function closeModal() {
