@@ -7,8 +7,9 @@ import { authClient } from "../utils/firebase";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { NEXT_PUBLIC_API_URL } from "../utils/config";
 import { getSession } from "next-auth/react";
+import { useRouter } from "next/navigation";
 export default function Personas() {
-  
+  const router = useRouter()
   const [isOpen, setisOpen] = useState(false)
   const [loading, setLoading] = useState(true);
   const AUTH = authClient
@@ -25,10 +26,12 @@ export default function Personas() {
   const checkSession = async()=>{
     const session = await getSession()
   if(!session || !session.user){
-    console.log("XDXDXD")
+    router.push("/signin")
+    setLoading(true)
   }
   else{
     console.log(session)
+    setLoading(false)
   }
   }
 
@@ -39,11 +42,9 @@ export default function Personas() {
     if(response.ok){
       const response_json = await response.json()
       SetUsers(response_json.users)
-      setLoading(false)
     }
     else{
       console.log("NO funciono")
-      setLoading(false)
     }
   }
 
