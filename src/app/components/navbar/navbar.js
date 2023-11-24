@@ -2,6 +2,7 @@ import { Fragment } from 'react'
 import { Disclosure, Menu, Transition } from '@headlessui/react'
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline'
 import NoLingerCon from '@/images/NoLingerCon.jpg'
+import { signOut, useSession } from 'next-auth/react';
 
 const user = {
   name: 'Tom Cook',
@@ -26,6 +27,11 @@ function classNames(...classes) {
 
   
 export default function Navbar() {
+
+  const handleSignOut = async () => {
+    await signOut(); // Call the signOut function
+  };
+
     return(
         <Disclosure as="nav" className="bg-gray-800 dark:bg-gray-800">
         {({ open }) => (
@@ -34,11 +40,13 @@ export default function Navbar() {
               <div className="flex h-16 items-center justify-between">
                 <div className="flex items-center">
                   <div className="flex-shrink-0">
-                    <img
-                      className="h-8 w-8"
-                      src={NoLingerCon.src}
-                      alt="Your Company"
-                    />
+                    <a href="/">
+                      <img
+                        className="h-8 w-8"
+                        src={NoLingerCon.src}
+                        alt="Your Company"
+                      />
+                    </a>
                   </div>
                   <div className="hidden md:block">
                     <div className="ml-10 flex items-baseline space-x-4">
@@ -87,6 +95,7 @@ export default function Navbar() {
                               {({ active }) => (
                                 <a
                                   href={item.href}
+                                  onClick={item.name === 'Cerrar sesión' ? handleSignOut : undefined} // Handle sign-out click
                                   className={classNames(
                                     active ? 'bg-gray-100 dark:bg-gray-700' : '',
                                     'block px-4 py-2 text-sm text-gray-700 dark:text-gray-300'
