@@ -6,9 +6,12 @@ import { Fragment, useState, useEffect } from 'react'
 import { NEXT_PUBLIC_API_URL } from "../utils/config";
 import BucketService from "../utils/oracleBucket";
 import axios from "axios";
+import { getSession } from "next-auth/react";
+import { useRouter } from "next/navigation";
 
 
 export default function Planogramas() {
+    const router = useRouter()
     const [planogramList, setPlanogramList] = useState([]);
     const [loading, setLoading] = useState(true);
     const [selectedImage, setSelectedImage] = useState({
@@ -44,16 +47,27 @@ export default function Planogramas() {
       setStores(stores.data.stores);    
     }
 
+    const checkSession = async()=>{
+      const session = await getSession()
+    if(!session || !session.user){
+      router.push("/signin")
+      setLoading(true)
+    }
+    else{
+      console.log(session)
+      setLoading(false)
+    }
+    }
+
     useEffect(() => {
+      checkSession()
       getStores()
 
       axios.get(`${NEXT_PUBLIC_API_URL}/getPlanograms`)
            .then((response) => {
               setPlanogramList(response.data.planograms);
-              setLoading(false);
             })
              .catch(e => console.log(e))
-             setLoading(false);
 
     }, [])
 
