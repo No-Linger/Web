@@ -1,12 +1,16 @@
 "use client";
+import axios from "axios";
 import Navbar from "./components/navbar/navbar";
 import { getSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import {useState, useEffect } from 'react';
+import { NEXT_PUBLIC_API_URL } from "./utils/config";
 
 export default function Home() {
   const router = useRouter()
   const [loading, setLoading] = useState(true);
+  const [token, setToken] = useState(null);
+  const [user, SetUser] = useState('');
 
   const checkSession = async()=>{
     const session = await getSession()
@@ -15,14 +19,35 @@ export default function Home() {
     setLoading(true)
   }
   else{
-    console.log(session)
+    setToken(session.accessToken)
     setLoading(false)
   }
-}
+
+  }
+
+  const getUserData = async()=>{
+    axios.get(`${NEXT_PUBLIC_API_URL}/getUser`, 
+    {
+      headers: {
+        'Authorization': token
+      }
+    }).then((res)=>{
+      SetUser(res.data.user.Nombre)
+    }).catch((err)=>{
+      console.log(err)
+    }) 
+  }
 
   useEffect(() => {
-    checkSession()
-  }, [])
+    checkSession();
+  }, []);
+
+  useEffect(() => {
+    if (!loading && token) {
+      getUserData();
+    }
+  }, [loading, token]);
+
   return (
     <>
       <div className="min-h-screen bg-gray-100 dark:bg-gray-700">
@@ -37,7 +62,7 @@ export default function Home() {
         ) : (
           <main>
           <div className="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
-            <h1 className="text-3xl font-bold tracking-tight text-gray-900 dark:text-gray-300">Dashboard principal :)</h1>
+            <h1 className="text-3xl font-bold tracking-tight text-gray-900 dark:text-gray-300">¡Hola, {user}!</h1>
           </div>
         </main>
         )}
