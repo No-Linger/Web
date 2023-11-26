@@ -21,14 +21,17 @@ const authOptions = {
     pages: {
         signIn: '/signin'
     },
-    callbacks: {
-        async redirect({ url, baseUrl}) {
-            if (url.startsWith('/api/auth/callback/google')) {
-                return '/';
-            }
-            return baseUrl;
-        },
-    },
+    // callbacks: {
+    //     async redirect({ url, baseUrl}) {
+    //         if (url.startsWith('/api/auth/callback/google')) {
+    //             return '/signin';
+    //         }
+
+            
+    //         return baseUrl;
+    //     },
+        
+    // },
     providers: [
         CredentialsProvider({
             name: 'Credentials',
@@ -37,7 +40,8 @@ const authOptions = {
                 return await signInWithEmailAndPassword(authClient, credentials.email || '', credentials.password || '')
                     .then(userCredential => {
                         if (userCredential.user) {
-                            return userCredential.user;
+                            //console.log(userCredential.user.uid)
+                            return {email:userCredential.user.email,accessToken:userCredential.user.accessToken}
                         }
                         return null;
                     });
@@ -48,6 +52,25 @@ const authOptions = {
             clientSecret: process.env.NEXT_PUBLIC_GOOGLE_CLIENT_SECRET,
         }),
     ],
+    callbacks:{
+              async jwt({ user, token }) {
+                if (user) {
+                  token.email = user.email;
+                  token.accessToken= user.accessToken;
+          
+                }
+                return token;
+              },
+          
+
+
+            async session({ session, user,token }) {
+                session.accessToken = token.accessToken
+                
+                return session
+              }
+      
+    }
 };
 
 export default NextAuth(authOptions);
