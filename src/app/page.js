@@ -20,7 +20,6 @@ export default function Home() {
   }
   else{
     setToken(session.accessToken)
-    setLoading(false)
   }
 
   }
@@ -38,13 +37,15 @@ export default function Home() {
     }) 
   }
 
+  async function getStats(){}
   useEffect(() => {
     checkSession();
   }, []);
 
   useEffect(() => {
-    if (!loading && token) {
+    if (token) {
       getUserData();
+      setLoading(false);
     }
   }, [loading, token]);
 

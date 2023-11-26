@@ -37,7 +37,6 @@ export default function Personas() {
   }
   else{
     setToken(session.accessToken)
-    setLoading(false)
   }
   }
 
@@ -61,8 +60,9 @@ export default function Personas() {
     })
     if(response.ok){
       const response_json = await response.json()
-      getUserData();
       SetUsers(response_json.users)
+      setLoading(false)
+
     }
     else{
       console.log("NO funciono")
@@ -74,7 +74,8 @@ export default function Personas() {
   }, [])
 
   useEffect(() => {
-    if(token && !loading){
+    if(token){
+      getUserData();
       getUsers()
     }
   }, [loading, token])
