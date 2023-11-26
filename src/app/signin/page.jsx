@@ -1,7 +1,6 @@
 'use client';
 
 import NoLinger from '@/images/NoLinger.png';
-import GoogleLogo from '@/images/googleLogo.png';
 import { signIn } from 'next-auth/react';
 import { useRouter } from 'next/navigation';
 import { useState } from 'react';
