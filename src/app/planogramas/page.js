@@ -14,6 +14,8 @@ export default function Planogramas() {
     const router = useRouter()
     const [planogramList, setPlanogramList] = useState([]);
     const [loading, setLoading] = useState(true);
+    const [token, setToken] = useState(null);
+    const [user, setUser] = useState(null);
     const [selectedImage, setSelectedImage] = useState({
       name: "",
       img: null,
@@ -42,9 +44,26 @@ export default function Planogramas() {
     }   
 
     async function getStores(){
-      const stores = await axios.get(`${NEXT_PUBLIC_API_URL}/getStores`)
+      const stores = await axios.get(`${NEXT_PUBLIC_API_URL}/getStores`, {
+        headers:{
+          "Authorization": token
+        }
+      })
       
       setStores(stores.data.stores);    
+    }
+    
+    const getUserData = async()=>{
+      axios.get(`${NEXT_PUBLIC_API_URL}/getUser`, 
+      {
+        headers: {
+          'Authorization': token
+        }
+      }).then((res)=>{
+        setUser(res.data.user.Nombre)
+      }).catch((err)=>{
+        console.log(err)
+      }) 
     }
 
     const checkSession = async()=>{
@@ -54,22 +73,32 @@ export default function Planogramas() {
       setLoading(true)
     }
     else{
-      console.log(session)
-      setLoading(false)
+      setToken(session.accessToken);
     }
     }
 
     useEffect(() => {
       checkSession()
-      getStores()
-
-      axios.get(`${NEXT_PUBLIC_API_URL}/getPlanograms`)
-           .then((response) => {
-              setPlanogramList(response.data.planograms);
-            })
-             .catch(e => console.log(e))
-
     }, [])
+
+    useEffect(()=> {
+      if(token){
+        getStores()
+        getUserData()
+
+        axios.get(`${NEXT_PUBLIC_API_URL}/getPlanograms`, {
+          headers:{
+            'Authorization': token
+          }
+        })
+            .then((response) => {
+                setPlanogramList(response.data.planograms);
+                setLoading(false)
+              })
+              .catch(e => console.log(e))
+      }
+
+    }, [loading, token])
 
     async function addPlanogram(){
 
@@ -87,10 +116,16 @@ export default function Planogramas() {
           date: new Date(),
           img: url
         
+        }, {
+          headers: {
+            'Authorization': token
+          }
         });
         console.log(response);
 
-        axios.get(`${NEXT_PUBLIC_API_URL}/getPlanograms`)
+        axios.get(`${NEXT_PUBLIC_API_URL}/getPlanograms`, {
+          headers:{ 'Authorization': token}
+        })
              .then((response) => {
               setPlanogramList(response.data.planograms);
              })
@@ -116,7 +151,7 @@ export default function Planogramas() {
         <main>
           <div className="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
             <header className="mb-10">
-                <h1 className="text-3xl font-bold tracking-tight text-gray-900 dark:text-gray-300">¡Bienvenido, usuario!</h1>
+                <h1 className="text-3xl font-bold tracking-tight text-gray-900 dark:text-gray-300">¡Bienvenido, {user}!</h1>
                 <h2 className="text-lg font-semibold tracking-tight text-gray-500 dark:text-gray-400">Consulta y agrega planogramas</h2>
             </header>
                 <Table 
