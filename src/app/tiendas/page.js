@@ -12,6 +12,7 @@ export default function Tiendas() {
   const router = useRouter()
   const [isOpen, setIsOpen] = useState(false);
   const [loading, setLoading] = useState(true);
+  const [user, SetUser] = useState('');
   const [token, setToken] = useState(null);
   const [tiendas, setTiendas] = useState({
     name: "",
@@ -44,6 +45,19 @@ export default function Tiendas() {
   }
 }
 
+const getUserData = async()=>{
+  axios.get(`${NEXT_PUBLIC_API_URL}/getUser`, 
+  {
+    headers: {
+      'Authorization': token
+    }
+  }).then((res)=>{
+    SetUser(res.data.user.Nombre)
+  }).catch((err)=>{
+    console.log(err)
+  }) 
+}
+
   useEffect(() => {
     checkSession()
   }, []);
@@ -59,6 +73,7 @@ export default function Tiendas() {
       .then((response) => {
         console.log(response.data);
         setTiendasList(response.data.stores);
+        getUserData();
         setLoading(false);
       })
       .catch((error) => {
@@ -124,7 +139,7 @@ export default function Tiendas() {
         <main>
           <div className="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
             <header className="mb-10">
-              <h1 className="text-3xl font-bold tracking-tight text-gray-900 dark:text-gray-300">¡Bienvenido, usuario!</h1>
+              <h1 className="text-3xl font-bold tracking-tight text-gray-900 dark:text-gray-300">¡Bienvenido, {user}!</h1>
               <h2 className="text-lg font-semibold tracking-tight text-gray-500 dark:text-gray-400">Consulta y agrega tiendas</h2>
             </header>
             <Table
