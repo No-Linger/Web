@@ -23,7 +23,7 @@ export default function Signin() {
     if (result?.error) {
       setError(result.error);
     } else if (result?.ok) {
-      router.push('/planogramas');
+      router.push('/');
     }
   };
 
