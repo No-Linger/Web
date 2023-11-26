@@ -41,7 +41,6 @@ export default function Tiendas() {
   }
   else{
     setToken(session.accessToken)
-    setLoading(false)
   }
 }
 
@@ -63,7 +62,8 @@ const getUserData = async()=>{
   }, []);
 
   useEffect(() => {
-    if (!loading && token) {
+    if (token) {
+      getUserData();
       axios.get(`${NEXT_PUBLIC_API_URL}/getStores`, 
       {
         headers: {
@@ -71,14 +71,11 @@ const getUserData = async()=>{
         }
       })
       .then((response) => {
-        console.log(response.data);
         setTiendasList(response.data.stores);
-        getUserData();
         setLoading(false);
       })
       .catch((error) => {
         console.log(error);
-        setLoading(false);
       });
     }
   }, [loading, token]);
