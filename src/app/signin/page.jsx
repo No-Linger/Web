@@ -78,20 +78,9 @@ export default function Signin() {
               Iniciar Sesión
             </button>
           </div>
-
-          <button
-            type="button"
-            className="flex items-center justify-center w-full bg-white hover:bg-slate-200 text-slate-800 font-semibold py-2 px-4 rounded-lg focus:ring focus:outline-none border-gray-300 border-2"
-            onClick={() => signIn('google')}>
-              <img className= 'mx-auto h-6 w-6' src={GoogleLogo.src} alt='Google'/>
-          </button>
-
         </form>
         <p className="mt-4 text-center text-gray-600 text-sm">
-          No eres miembro todavía? <a href="/signup" className="text-slate-900 hover:underline">Crear cuenta</a>
-        </p>
-        <p className="mt-4 text-center text-gray-600 text-sm">
-        Olvidaste tu contraseña? <a href="/forgot_password" className="text-slate-900 hover:underline">Entra aquí</a>
+        Olvidaste tu contraseña? <a href="/forgot_password" className="text-blue-900 hover:underline">Entra aquí</a>
         </p>
         <div className="mt-6">
         </div>
