@@ -62,8 +62,19 @@ export default function Home() {
       </div>
         ) : (
           <main>
-          <div className="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
+          <div className="mx-auto px-4 py-6 sm:px-6 lg:px-8">
             <h1 className="text-3xl font-bold tracking-tight text-gray-900 dark:text-gray-300">¡Hola, {user}!</h1>
+            
+            <div>
+              <iframe
+                style={{
+                  width: "99vw",
+                  height: "98vh"
+                }}
+                src="https://charts.mongodb.com/charts-no-linger-db-tuboj/embed/dashboards?id=19d46444-758a-4110-8859-50eba4ab5d42&theme=dark&autoRefresh=false&maxDataAge=-1&showTitleAndDesc=true&scalingWidth=fixed&scalingHeight=fixed"
+              ></iframe>
+            </div>
+
           </div>
         </main>
         )}
