@@ -1,7 +1,6 @@
 'use client';
 
 import NoLinger from '@/images/NoLinger.png';
-import GoogleLogo from '@/images/googleLogo.png';
 import { signIn } from 'next-auth/react';
 import { useRouter } from 'next/navigation';
 import { useState } from 'react';
@@ -24,13 +23,13 @@ export default function Signin() {
     if (result?.error) {
       setError(result.error);
     } else if (result?.ok) {
-      router.push('/planogramas');
+      router.push('/');
     }
   };
 
   return (
     <div className="flex items-center justify-center min-h-screen bg-gray-980">
-      <div className="bg-white rounded-lg shadow-md p-8 w-full max-w-md transform transition-transform hover:scale-105 hover:shadow-xl mb-10">
+      <div className="bg-white rounded-md shadow-md p-4 w-full max-w-sm transform transition-transform hover:scale-105 hover:shadow-xl mb-10">
 
         <img data-testid = "no-linger-logo" className= 'mx-auto h-48 w-48' src={NoLinger.src} alt='logo NoLinger'/>
         <div className="text-center">
@@ -78,20 +77,9 @@ export default function Signin() {
               Iniciar Sesión
             </button>
           </div>
-
-          <button
-            type="button"
-            className="flex items-center justify-center w-full bg-white hover:bg-slate-200 text-slate-800 font-semibold py-2 px-4 rounded-lg focus:ring focus:outline-none border-gray-300 border-2"
-            onClick={() => signIn('google')}>
-              <img className= 'mx-auto h-6 w-6' src={GoogleLogo.src} alt='Google'/>
-          </button>
-
         </form>
         <p className="mt-4 text-center text-gray-600 text-sm">
-          No eres miembro todavía? <a href="/signup" className="text-slate-900 hover:underline">Crear cuenta</a>
-        </p>
-        <p className="mt-4 text-center text-gray-600 text-sm">
-        Olvidaste tu contraseña? <a href="/forgot_password" className="text-slate-900 hover:underline">Entra aquí</a>
+        Olvidaste tu contraseña? <a href="/forgot_password" className="text-blue-900 hover:underline">Entra aquí</a>
         </p>
         <div className="mt-6">
         </div>
