@@ -67,7 +67,7 @@ export default function Home() {
             
             <iframe
               className="w-full min-h-screen text-center justify-center flex"
-              src="https://charts.mongodb.com/charts-no-linger-db-tuboj/embed/dashboards?id=19d46444-758a-4110-8859-50eba4ab5d42&theme=dark&autoRefresh=false&maxDataAge=-1&showTitleAndDesc=true&scalingWidth=fixed&scalingHeight=fixed"
+              src="https://charts.mongodb.com/charts-no-linger-db-tuboj/embed/dashboards?id=19d46444-758a-4110-8859-50eba4ab5d42&theme=dark&autoRefresh=false&maxDataAge=-1&showTitleAndDesc=true&scalingWidth=fixed&scalingHeight=fixed" 
             >
             </iframe>
           </div>
