@@ -61,9 +61,15 @@ export default function Home() {
       </div>
       </div>
         ) : (
-          <main>
-          <div className="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
+          <main className="overflow-hidden">
+          <div className="mx-auto px-4 pt-6 sm:px-6 lg:px-8 outline">
             <h1 className="text-3xl font-bold tracking-tight text-gray-900 dark:text-gray-300">¡Hola, {user}!</h1>
+            
+            <iframe
+              className="w-full min-h-screen text-center justify-center flex"
+              src="https://charts.mongodb.com/charts-no-linger-db-tuboj/embed/dashboards?id=19d46444-758a-4110-8859-50eba4ab5d42&theme=dark&autoRefresh=false&maxDataAge=-1&showTitleAndDesc=true&scalingWidth=fixed&scalingHeight=fixed"
+            >
+            </iframe>
           </div>
         </main>
         )}
